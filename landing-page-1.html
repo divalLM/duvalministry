@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Art du Message Puissant · Théophile Duval</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:       #0f2340;
+  --navy-mid:   #1b3a5c;
+  --navy-light: #1e4470;
+  --gold:       #c9993a;
+  --gold-light: #e8b84b;
+  --gold-pale:  #f5e4b8;
+  --cream:      #fdf6e8;
+  --cream-dark: #f0e6cc;
+  --ivory:      #fefaf2;
+  --text-dark:  #1a1208;
+  --text-mid:   #3d2e10;
+  --text-light: #7a6540;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--navy); color: var(--cream); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; overflow-x: hidden; }
+
+/* NOISE */
+body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.35; }
+
+/* NAV */
+.nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:16px 32px; display:flex; justify-content:space-between; align-items:center; background:rgba(10,25,45,0); backdrop-filter:blur(0px); transition:background 0.4s, backdrop-filter 0.4s, padding 0.3s; }
+.nav.scrolled { background:rgba(10,25,45,0.93); backdrop-filter:blur(12px); padding:12px 32px; border-bottom:1px solid rgba(201,153,58,0.15); }
+.nav-logo { font-family:'Cinzel',serif; font-size:14px; letter-spacing:2px; color:var(--gold); text-decoration:none; }
+.nav-cta { font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--navy); background:var(--gold); padding:10px 24px; text-decoration:none; font-weight:700; transition:background 0.2s, transform 0.2s; }
+.nav-cta:hover { background:var(--gold-light); transform:translateY(-1px); }
+
+/* HERO */
+.hero { position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:80px 24px 100px; text-align:center; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-10%; left:50%; transform:translateX(-50%); width:900px; height:900px; background:radial-gradient(ellipse at center, rgba(201,153,58,0.22) 0%, rgba(201,153,58,0.10) 25%, rgba(27,58,92,0.04) 55%, transparent 70%); pointer-events:none; animation:pulseLight 6s ease-in-out infinite; }
+.hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:200px; background:linear-gradient(to bottom, transparent, var(--navy)); pointer-events:none; }
+@keyframes pulseLight { 0%,100%{opacity:0.8;transform:translateX(-50%) scale(1)} 50%{opacity:1;transform:translateX(-50%) scale(1.06)} }
+
+.rays { position:absolute; top:0; left:50%; transform:translateX(-50%); width:100%; max-width:900px; height:100%; pointer-events:none; opacity:0.07; }
+.rays span { position:absolute; top:0; left:50%; width:2px; height:100%; background:linear-gradient(to bottom, var(--gold-light), transparent); transform-origin:top center; animation:rayPulse 8s ease-in-out infinite; }
+.rays span:nth-child(1){transform:rotate(-35deg);animation-delay:0s}
+.rays span:nth-child(2){transform:rotate(-22deg);animation-delay:0.5s}
+.rays span:nth-child(3){transform:rotate(-12deg);animation-delay:1s}
+.rays span:nth-child(4){transform:rotate(-5deg);animation-delay:1.2s}
+.rays span:nth-child(5){transform:rotate(0deg);animation-delay:0.3s}
+.rays span:nth-child(6){transform:rotate(5deg);animation-delay:0.8s}
+.rays span:nth-child(7){transform:rotate(12deg);animation-delay:1.5s}
+.rays span:nth-child(8){transform:rotate(22deg);animation-delay:0.2s}
+.rays span:nth-child(9){transform:rotate(35deg);animation-delay:0.9s}
+@keyframes rayPulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+
+.hero-eyebrow { font-family:'Cinzel',serif; font-size:11px; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:28px; opacity:0; animation:fadeUp 0.8s ease forwards 0.2s; }
+.hero-ornament { display:flex; align-items:center; gap:16px; margin-bottom:32px; opacity:0; animation:fadeUp 0.8s ease forwards 0.4s; }
+.hero-title { font-family:'Cinzel',serif; font-size:clamp(36px,7vw,80px); font-weight:700; line-height:1.08; color:var(--gold-pale); text-shadow:0 0 80px rgba(201,153,58,0.4),0 2px 40px rgba(0,0,0,0.8); letter-spacing:2px; margin-bottom:20px; opacity:0; animation:fadeUp 1s ease forwards 0.6s; }
+.hero-title span { display:block; color:var(--gold-light); }
+.hero-subtitle { font-family:'Cormorant Garamond',serif; font-size:clamp(18px,2.5vw,24px); font-style:italic; font-weight:300; color:var(--cream-dark); max-width:620px; line-height:1.6; margin-bottom:48px; opacity:0; animation:fadeUp 1s ease forwards 0.9s; }
+.hero-cta-group { display:flex; flex-direction:column; align-items:center; gap:16px; opacity:0; animation:fadeUp 1s ease forwards 1.1s; }
+
+.btn-primary { display:inline-flex; align-items:center; gap:12px; background:linear-gradient(135deg, var(--gold), #a87820, var(--gold-light)); background-size:200% 200%; color:var(--navy); font-family:'Cinzel',serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; text-decoration:none; padding:18px 44px; border:none; cursor:pointer; transition:all 0.4s ease; animation:shimmer 3s ease infinite; }
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(201,153,58,0.5); letter-spacing:3px; }
+@keyframes shimmer { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.hero-price-badge { display:inline-flex; align-items:center; gap:10px; background:rgba(201,153,58,0.12); border:1px solid rgba(201,153,58,0.35); padding:10px 24px; font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--gold); margin-bottom:8px; }
+.hero-trust { margin-top:20px; font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic; color:rgba(253,246,232,0.45); letter-spacing:1px; opacity:0; animation:fadeUp 1s ease forwards 1.4s; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+/* PAIN */
+.pain { background:linear-gradient(180deg, var(--navy) 0%, #0d1f38 100%); padding:100px 24px; text-align:center; position:relative; }
+.pain::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent); }
+.section-eyebrow { font-family:'Cinzel',serif; font-size:10px; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:20px; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,54px); font-weight:600; line-height:1.2; color:var(--gold-pale); max-width:760px; margin:0 auto 24px; }
+.section-title em { font-style:italic; color:var(--gold); }
+.section-lead { font-size:19px; color:rgba(253,246,232,0.75); max-width:640px; margin:0 auto 60px; line-height:1.8; }
+.pain-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2px; max-width:960px; margin:0 auto; }
+.pain-card { background:rgba(27,58,92,0.35); border:1px solid rgba(201,153,58,0.12); padding:40px 32px; text-align:left; position:relative; transition:background 0.3s, border-color 0.3s; }
+.pain-card:hover { background:rgba(27,58,92,0.55); border-color:rgba(201,153,58,0.3); }
+.pain-card::before { content:attr(data-num); position:absolute; top:20px; right:24px; font-family:'Cinzel',serif; font-size:48px; font-weight:900; color:rgba(201,153,58,0.08); line-height:1; }
+.pain-icon { font-size:28px; margin-bottom:16px; }
+.pain-card h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--gold-pale); margin-bottom:12px; }
+.pain-card p { font-size:16px; color:rgba(253,246,232,0.65); line-height:1.7; }
+
+/* BOOK SECTION */
+.book-section { background:var(--cream); color:var(--text-dark); padding:120px 24px; position:relative; overflow:hidden; }
+.book-section::before { content:''; position:absolute; top:-2px; left:0; right:0; height:4px; background:linear-gradient(to right, transparent, var(--gold), transparent); }
+.book-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:80px; align-items:center; }
+.book-mockup { display:flex; justify-content:center; align-items:center; }
+.book-mockup img { width:100%; max-width:420px; border-radius:8px; box-shadow:0 30px 80px rgba(0,0,0,0.35), 0 8px 30px rgba(0,0,0,0.2); transform:perspective(1000px) rotateY(-6deg); transition:transform 0.4s ease; }
+.book-mockup img:hover { transform:perspective(1000px) rotateY(-2deg) scale(1.02); }
+.book-content .section-eyebrow { color:var(--gold); }
+.book-content .section-title { color:var(--text-dark); margin-left:0; text-align:left; }
+.book-content .section-lead { color:var(--text-mid); margin-left:0; text-align:left; font-size:17px; }
+.book-features { list-style:none; display:flex; flex-direction:column; gap:14px; margin-bottom:40px; }
+.book-features li { display:flex; gap:14px; align-items:flex-start; font-size:16px; color:var(--text-mid); line-height:1.6; }
+.book-features li::before { content:'✦'; color:var(--gold); font-size:12px; margin-top:4px; flex-shrink:0; }
+.book-features li strong { color:var(--text-dark); font-weight:600; }
+.book-price-badge { display:inline-flex; flex-direction:column; gap:4px; background:linear-gradient(135deg,#fff8ea,#fdf0d0); border:1px solid rgba(201,153,58,0.4); padding:16px 24px; margin-bottom:24px; }
+.book-price-badge .price-launch { font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); text-transform:uppercase; }
+.book-price-badge .price-amount { font-family:'Cinzel',serif; font-size:32px; font-weight:900; color:var(--text-dark); }
+.book-price-badge .price-warning { font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic; color:var(--text-light); }
+.btn-primary-dark { display:inline-flex; align-items:center; gap:12px; background:linear-gradient(135deg, var(--navy), var(--navy-mid)); color:var(--gold-pale); font-family:'Cinzel',serif; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; text-decoration:none; padding:18px 40px; border:1px solid rgba(201,153,58,0.4); cursor:pointer; transition:all 0.3s ease; }
+.btn-primary-dark:hover { background:var(--navy); border-color:var(--gold); color:var(--gold); transform:translateY(-2px); box-shadow:0 8px 30px rgba(27,58,92,0.3); }
+
+/* MODULES */
+.modules { background:#0a1a30; padding:120px 24px; position:relative; }
+.modules::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent); }
+.modules-inner { max-width:900px; margin:0 auto; }
+.modules-header { text-align:center; margin-bottom:70px; }
+.module-list { display:flex; flex-direction:column; gap:0; }
+.module-item { display:grid; grid-template-columns:80px 1fr; gap:0; border-bottom:1px solid rgba(201,153,58,0.1); padding:32px 0; transition:background 0.3s; }
+.module-item:hover { background:rgba(201,153,58,0.03); }
+.module-item:hover .module-num { color:var(--gold-light); }
+.module-num { font-family:'Cinzel',serif; font-size:36px; font-weight:900; color:rgba(201,153,58,0.3); line-height:1; padding-top:4px; transition:color 0.3s; }
+.module-label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:4px; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
+.module-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--gold-pale); margin-bottom:12px; }
+.module-chapters { display:flex; flex-wrap:wrap; gap:8px; }
+.chapter-tag { font-size:13px; color:rgba(253,246,232,0.5); background:rgba(201,153,58,0.08); border:1px solid rgba(201,153,58,0.15); padding:4px 12px; font-family:'EB Garamond',serif; font-style:italic; }
+
+/* VERSE */
+.verse-section { background:linear-gradient(135deg, var(--navy-mid), var(--navy)); padding:100px 24px; text-align:center; position:relative; overflow:hidden; }
+.verse-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:600px; background:radial-gradient(circle, rgba(201,153,58,0.08), transparent 70%); pointer-events:none; }
+.verse-mark { font-family:'Cormorant Garamond',serif; font-size:120px; line-height:0.6; color:rgba(201,153,58,0.12); margin-bottom:24px; }
+.verse-text { font-family:'Cormorant Garamond',serif; font-size:clamp(26px,4vw,42px); font-style:italic; font-weight:300; color:var(--gold-pale); max-width:780px; margin:0 auto 24px; line-height:1.5; }
+.verse-ref { font-family:'Cinzel',serif; font-size:12px; letter-spacing:3px; color:var(--gold); }
+
+/* AUTHOR */
+.author { background:var(--cream); color:var(--text-dark); padding:120px 24px; }
+.author-inner { max-width:800px; margin:0 auto; display:grid; grid-template-columns:180px 1fr; gap:60px; align-items:start; }
+.author-avatar { width:160px; height:160px; border-radius:50%; border:3px solid var(--gold); box-shadow:0 8px 40px rgba(27,58,92,0.3); flex-shrink:0; overflow:hidden; }
+.author-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+.author-name-row { display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+.cert-badge { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:var(--gold); border-radius:50%; flex-shrink:0; }
+.cert-badge svg { width:13px; height:13px; }
+.author-name { font-family:'Cinzel',serif; font-size:28px; font-weight:700; color:var(--text-dark); margin-bottom:4px; }
+.author-title-sub { font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:var(--gold); margin-bottom:24px; }
+.author-bio { font-size:17px; color:var(--text-mid); line-height:1.85; }
+.author-bio p+p { margin-top:16px; }
+.author-divider { width:48px; height:2px; background:var(--gold); margin:24px 0; }
+
+/* FAQ */
+.faq-section { background:#0a1a30; padding:120px 24px; position:relative; }
+.faq-section::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent); }
+.faq-inner { max-width:780px; margin:0 auto; }
+.faq-inner .section-title { text-align:center; margin-bottom:16px; }
+.faq-inner .section-lead { text-align:center; margin-bottom:60px; font-size:17px; }
+.faq-cat-label { font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--gold); text-transform:uppercase; margin-bottom:16px; margin-top:40px; }
+.faq-list { display:flex; flex-direction:column; gap:2px; }
+.faq-item { border-bottom:1px solid rgba(201,153,58,0.12); }
+.faq-question { width:100%; background:none; border:none; color:var(--gold-pale); font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; text-align:left; padding:24px 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; transition:color 0.3s; }
+.faq-question:hover { color:var(--gold); }
+.faq-icon { font-size:24px; color:var(--gold); flex-shrink:0; transition:transform 0.3s ease; font-family:'Cinzel',serif; }
+.faq-icon.open { transform:rotate(45deg); }
+.faq-answer { max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.3s ease; }
+.faq-answer.open { max-height:400px; padding-bottom:24px; }
+.faq-answer p { font-size:17px; color:rgba(253,246,232,0.7); line-height:1.85; font-family:'EB Garamond',serif; }
+
+/* CTA FINAL */
+.cta-section { background:linear-gradient(160deg,#0a1520 0%,var(--navy) 50%,#0d1f38 100%); padding:120px 24px; text-align:center; position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent); }
+.cta-section::after { content:''; position:absolute; bottom:-200px; left:50%; transform:translateX(-50%); width:800px; height:400px; background:radial-gradient(ellipse, rgba(201,153,58,0.12), transparent 70%); pointer-events:none; }
+.cta-inner { position:relative; z-index:1; max-width:600px; margin:0 auto; }
+.cta-inner .section-title { color:var(--gold-pale); }
+.cta-price-block { margin:40px auto; display:inline-flex; flex-direction:column; align-items:center; gap:8px; background:rgba(201,153,58,0.08); border:1px solid rgba(201,153,58,0.3); padding:28px 48px; }
+.cta-price-label { font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--gold); text-transform:uppercase; }
+.cta-price-amount { font-family:'Cinzel',serif; font-size:56px; font-weight:900; color:var(--gold-pale); line-height:1; }
+.cta-price-note { font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic; color:rgba(253,246,232,0.5); }
+.cta-btn-wrap { margin-top:8px; }
+.btn-cta-final { display:inline-flex; align-items:center; gap:14px; background:linear-gradient(135deg, var(--gold), #a87820, var(--gold-light)); background-size:200%; color:var(--navy); font-family:'Cinzel',serif; font-size:14px; font-weight:700; letter-spacing:3px; text-transform:uppercase; text-decoration:none; padding:22px 56px; border:none; cursor:pointer; transition:all 0.3s ease; animation:shimmer 3s ease infinite; }
+.btn-cta-final:hover { transform:translateY(-3px); box-shadow:0 16px 50px rgba(201,153,58,0.5); }
+.cta-guarantee { margin-top:24px; font-size:14px; font-style:italic; color:rgba(253,246,232,0.4); line-height:1.7; }
+
+/* FOOTER */
+footer { background:#050d18; padding:48px 24px; text-align:center; border-top:1px solid rgba(201,153,58,0.1); }
+.footer-cross { font-size:24px; color:var(--gold); margin-bottom:16px; }
+.footer-name { font-family:'Cinzel',serif; font-size:16px; color:var(--gold-pale); margin-bottom:8px; }
+.footer-copy { font-size:13px; font-style:italic; color:rgba(253,246,232,0.3); }
+.footer-links { margin-top:20px; display:flex; justify-content:center; align-items:center; gap:32px; flex-wrap:wrap; }
+.footer-links a { font-size:13px; color:rgba(253,246,232,0.4); text-decoration:none; font-style:italic; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+.footer-x-link { display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; opacity:0.35; transition:opacity 0.2s; }
+.footer-x-link:hover { opacity:0.7; }
+.footer-x-link svg { width:14px; height:14px; fill:rgba(253,246,232,0.6); }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1{transition-delay:0.1s} .reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s} .reveal-delay-4{transition-delay:0.4s}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .book-inner{grid-template-columns:1fr;gap:48px}
+  .book-mockup{order:-1}
+  .author-inner{grid-template-columns:1fr;gap:32px}
+  .author-avatar{width:100px;height:100px}
+  .author-name-row{justify-content:center}
+  .module-item{grid-template-columns:56px 1fr}
+  .nav-logo{font-size:12px}
+  .pain-grid{grid-template-columns:1fr}
+  .cta-price-amount{font-size:40px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="#" class="nav-logo">✝ Théophile Duval</a>
+  <a href="https://duval.mychariow.store/artdumessage" target="_blank" class="nav-cta">Obtenir le guide à 2$</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="rays"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <p class="hero-eyebrow">Guide pratique pour pasteurs &amp; leaders d'église francophones</p>
+  <div class="hero-ornament"><span style="color:var(--gold);font-size:22px">✦</span></div>
+  <h1 class="hero-title">L'Art du<br><span>Message Puissant</span></h1>
+  <p class="hero-subtitle">Le guide pratique en 5 modules pour préparer et prêcher des messages bibliques qui transforment réellement des vies.</p>
+  <div class="hero-cta-group">
+    <div class="hero-price-badge">✦ &nbsp;PRIX DE LANCEMENT : 2$ SEULEMENT&nbsp; ✦</div>
+    <a href="https://duval.mychariow.store/artdumessage" target="_blank" class="btn-primary">✝ &nbsp;Obtenir mon guide maintenant</a>
+    <a href="#contenu" style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,153,58,0.3);padding-bottom:2px;">Découvrir le contenu ↓</a>
+  </div>
+  <p class="hero-trust">Plus de 70 pages · 15 chapitres · Exercices pratiques · Template inclus</p>
+</section>
+
+<!-- DOULEUR -->
+<section class="pain">
+  <p class="section-eyebrow reveal">Vous reconnaissez-vous ?</p>
+  <h2 class="section-title reveal">Chaque dimanche recommence<br><em>le même combat.</em></h2>
+  <p class="section-lead reveal">La feuille blanche. La pression du temps. Le sentiment que votre message aurait pu être bien meilleur. Ce cycle a un nom, et il a une solution.</p>
+  <div class="pain-grid">
+    <div class="pain-card reveal reveal-delay-1" data-num="01"><div class="pain-icon">🌑</div><h3>La page blanche du vendredi soir</h3><p>Des heures à chercher une idée sans trouver le fil conducteur, pendant que la famille attend.</p></div>
+    <div class="pain-card reveal reveal-delay-2" data-num="02"><div class="pain-icon">🌀</div><h3>Le message surchargé</h3><p>Trop de versets, trop d'idées, trop de points. Un sermon que l'assemblée ne peut pas digérer.</p></div>
+    <div class="pain-card reveal reveal-delay-3" data-num="03"><div class="pain-icon">😔</div><h3>Le doute après l'estrade</h3><p>Ce sentiment pesant que votre message n'a pas atterri là où vous le vouliez vraiment.</p></div>
+    <div class="pain-card reveal reveal-delay-4" data-num="04"><div class="pain-icon">⏰</div><h3>Le temps qui manque toujours</h3><p>Entre le ministère, la famille et le travail, préparer un message solide semble impossible.</p></div>
+  </div>
+</section>
+
+<!-- VERSET -->
+<section class="verse-section">
+  <div class="verse-mark">"</div>
+  <p class="verse-text reveal">Prêche la Parole, insiste en toute occasion, favorable ou non, reprends, censure, exhorte, avec toute douceur et en instruisant.</p>
+  <p class="verse-ref reveal">2 Timothée 4 : 2</p>
+</section>
+
+<!-- LIVRE -->
+<section class="book-section" id="contenu">
+  <div class="book-inner">
+    <div class="book-mockup reveal">
+      <img src="book-cover.png" alt="L'Art du Message Puissant · Théophile Duval" />
+    </div>
+    <div class="book-content reveal reveal-delay-2">
+      <p class="section-eyebrow">Le guide complet</p>
+      <h2 class="section-title" style="font-size:clamp(28px,4vw,44px);">Plus de 70 pages de<br>méthode éprouvée sur le terrain</h2>
+      <p class="section-lead" style="margin-bottom:32px;">Pas un traité théologique. Une feuille de route concrète, écrite par un évangéliste qui prêche chaque semaine depuis plus de quinze ans.</p>
+      <ul class="book-features">
+        <li><strong>5 modules progressifs</strong> : de la prière initiale à la livraison sur l'estrade</li>
+        <li><strong>15 chapitres détaillés</strong> : chaque étape expliquée, illustrée, applicable</li>
+        <li><strong>Plans d'action concrets</strong> : exercices pratiques à la fin de chaque chapitre</li>
+        <li><strong>La Check-list du Samedi Soir</strong> : votre filet de sécurité avant chaque prédication</li>
+        <li><strong>Le Template de structure</strong> : une fiche vierge réutilisable pour chaque sermon</li>
+        <li><strong>La méthode de la "Big Idea"</strong> : la clé d'un message mémorable et percutant</li>
+      </ul>
+      <div class="book-price-badge">
+        <span class="price-launch">✦ Prix de lancement</span>
+        <span class="price-amount">2$</span>
+        <span class="price-warning">⚠️ Ce tarif est temporaire, sera augmenté prochainement</span>
+      </div>
+      <a href="https://duval.mychariow.store/artdumessage" target="_blank" class="btn-primary-dark">✝ &nbsp;Je veux ce guide maintenant</a>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="modules">
+  <div class="modules-inner">
+    <div class="modules-header">
+      <p class="section-eyebrow reveal">Ce que vous allez apprendre</p>
+      <h2 class="section-title reveal">Les 5 modules du guide</h2>
+    </div>
+    <div class="module-list">
+      <div class="module-item reveal"><div class="module-num">01</div><div class="module-body"><p class="module-label">Module 1</p><h3 class="module-title">La Préparation Spirituelle &amp; le Choix du Thème</h3><div class="module-chapters"><span class="chapter-tag">Commencer à genoux</span><span class="chapter-tag">Prédication textuelle vs thématique</span><span class="chapter-tag">La Big Idea</span><span class="chapter-tag">Définir l'objectif du message</span></div></div></div>
+      <div class="module-item reveal"><div class="module-num">02</div><div class="module-body"><p class="module-label">Module 2</p><h3 class="module-title">L'Étude &amp; l'Exégèse Accessible</h3><div class="module-chapters"><span class="chapter-tag">Analyser le texte en contexte</span><span class="chapter-tag">Les outils indispensables</span><span class="chapter-tag">Relier le texte au XXIe siècle</span></div></div></div>
+      <div class="module-item reveal"><div class="module-num">03</div><div class="module-body"><p class="module-label">Module 3</p><h3 class="module-title">L'Architecture du Message</h3><div class="module-chapters"><span class="chapter-tag">Introduction captivante</span><span class="chapter-tag">Organiser ses points</span><span class="chapter-tag">L'art des transitions</span><span class="chapter-tag">Conclusion &amp; appel à l'action</span></div></div></div>
+      <div class="module-item reveal"><div class="module-num">04</div><div class="module-body"><p class="module-label">Module 4</p><h3 class="module-title">L'Art de l'Illustration &amp; de l'Application</h3><div class="module-chapters"><span class="chapter-tag">Pourquoi et comment illustrer</span><span class="chapter-tag">De la théorie à la pratique</span></div></div></div>
+      <div class="module-item reveal"><div class="module-num">05</div><div class="module-body"><p class="module-label">Module 5</p><h3 class="module-title">La Livraison du Message (L'Oralité)</h3><div class="module-chapters"><span class="chapter-tag">Gérer son stress</span><span class="chapter-tag">Manuscrit vs notes synthétiques</span><span class="chapter-tag">Gestion du temps</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTEUR -->
+<section class="author">
+  <div class="author-inner">
+    <div class="reveal"><div class="author-avatar"><img src="theophile-duval.jpeg" alt="Théophile Duval"></div></div>
+    <div class="reveal reveal-delay-2">
+      <div class="author-name-row">
+        <h2 class="author-name">Théophile Duval</h2>
+        <span class="cert-badge"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12.75L11.25 15L15 9.75M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#0f2340" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="author-title-sub">Évangéliste &amp; Formateur en ministère</p>
+      <div class="author-divider"></div>
+      <div class="author-bio">
+        <p>Théophile Duval n'a pas toujours su prêcher. Comme beaucoup, il a connu les sermons décousus, les silences gênants devant l'estrade, et cette frustration profonde de sentir que son message n'atterrissait pas là où il le voulait.</p>
+        <p>Après plus de quinze années de ministère évangéliste, dans des salles de quinze personnes comme devant des assemblées de plusieurs centaines, il a formalisé une méthode claire, spirituellement ancrée et immédiatement applicable.</p>
+        <p>Ce guide est le fruit de cette expérience. Pas un manuel de séminaire. <em>Une feuille de route pour le terrain.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <p class="section-eyebrow reveal">Vos questions</p>
+    <h2 class="section-title reveal">Tout ce que vous voulez<br><em>savoir avant d'acheter</em></h2>
+    <p class="section-lead reveal" style="color:rgba(253,246,232,0.65);">Nous répondons honnêtement à chaque question.</p>
+    <div class="faq-list">
+
+      <p class="faq-cat-label reveal">✦ Sur le prix et l'accès</p>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Combien coûte ce guide ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Le guide est disponible à <strong>2$ en prix de lancement</strong>. Ce tarif est temporaire et sera augmenté prochainement. Pour le prix d'un café, vous accédez à 70+ pages de méthode éprouvée sur le terrain.</p></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Pourquoi si peu cher ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Ce prix de lancement a été volontairement fixé pour permettre à chaque pasteur, leader et prédicateur francophone d'y accéder, quelle que soit sa situation. C'est un investissement symbolique, pas un cadeau gratuit, pour vous engager à l'utiliser vraiment.</p></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Le téléchargement est-il immédiat après paiement ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Oui. Dès que votre paiement est confirmé sur Chariow, vous accédez instantanément au téléchargement. Vous recevrez également un email de confirmation avec votre lien d'accès permanent.</p></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Le prix va-t-il vraiment augmenter ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Oui. Le prix de 2$ est un tarif de lancement limité dans le temps. Une fois cette période terminée, le prix sera révisé à la hausse. Si vous lisez ceci maintenant, c'est le bon moment d'en profiter.</p></div>
+      </div>
+
+      <p class="faq-cat-label reveal" style="margin-top:32px">✦ Sur le contenu</p>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Ce guide est-il adapté aux débutants en prédication ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Oui, c'est même l'une de ses forces principales. Chaque concept est expliqué depuis zéro, avec des exemples concrets et des exercices pratiques. Si vous prêchez pour la première fois dans six mois ou si vous cherchez à poser des bases solides, ce guide est fait pour vous.</p></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Je prêche depuis plusieurs années. Y trouverai-je encore de la valeur ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Absolument. Les prédicateurs expérimentés utilisent souvent ce guide pour formaliser ce qu'ils font intuitivement et identifier leurs angles morts. Beaucoup adoptent immédiatement la méthode de la "Big Idea" et la Check-list du Samedi Soir dans leur routine de préparation.</p></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Ce guide convient-il à toutes les dénominations chrétiennes ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Oui. Les principes homilétiques enseignés sont fondés sur la Parole de Dieu et non sur une tradition dénominationnelle spécifique. Baptistes, pentecôtistes, réformés, charismatiques, indépendants : tous y trouveront des outils directement applicables dans leur contexte d'église.</p></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Faut-il avoir étudié la théologie pour comprendre ce guide ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Non. Ce guide a précisément été écrit pour le prédicateur de terrain, sans jargon académique. Si vous savez lire la Bible, vous pouvez appliquer ce guide dès cette semaine.</p></div>
+      </div>
+
+      <p class="faq-cat-label reveal" style="margin-top:32px">✦ Sur le format</p>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Dans quel format vais-je recevoir le guide ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Le guide est livré en PDF haute qualité, lisible sur tous vos appareils : smartphone, tablette ou ordinateur. Aucun logiciel spécial requis. Adobe Reader gratuit suffit amplement.</p></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Puis-je partager ce guide avec mon équipe pastorale ?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Pour un usage ministériel interne non commercial, oui. Pour toute redistribution publique ou usage commercial, merci de contacter l'auteur à duvalministry@gmail.com au préalable.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="section-eyebrow reveal">Dernière chance au prix de lancement</p>
+    <h2 class="section-title reveal">Commencez à prêcher<br><em style="color:var(--gold)">avec puissance</em> dès dimanche</h2>
+    <p class="section-lead reveal" style="color:rgba(253,246,232,0.7);">70+ pages · 5 modules · 15 chapitres · Check-list · Template<br>Téléchargement immédiat après paiement.</p>
+    <div class="cta-price-block reveal">
+      <span class="cta-price-label">✦ Prix de lancement</span>
+      <span class="cta-price-amount">2$</span>
+      <span class="cta-price-note">⚠️ Sera augmenté prochainement</span>
+    </div>
+    <div class="cta-btn-wrap reveal">
+      <a href="https://duval.mychariow.store/artdumessage" target="_blank" class="btn-cta-final">✝ &nbsp;Obtenir le guide maintenant</a>
+    </div>
+    <p class="cta-guarantee reveal">🔒 Paiement sécurisé via Chariow · Téléchargement immédiat · PDF haute qualité</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-cross">✝</div>
+  <p class="footer-name">Théophile Duval · Duval Ministry</p>
+  <p class="footer-copy">© 2025 Duval Ministry · Tous droits réservés</p>
+  <div class="footer-links">
+    <a href="https://duval.mychariow.store" target="_blank">Boutique Chariow</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">Politique de confidentialité</a>
+    <a href="mailto:duvalministry@gmail.com">Contact</a>
+    <a href="https://x.com/DuvalMinistry" target="_blank" class="footer-x-link" aria-label="X (Twitter)" title="Suivre sur X">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+// NAV
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+// REVEAL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// FAQ
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-answer.open').forEach(a => {
+    a.classList.remove('open');
+    a.previousElementSibling.querySelector('.faq-icon').classList.remove('open');
+  });
+  if (!isOpen) { answer.classList.add('open'); icon.classList.add('open'); }
+}
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){ e.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  });
+});
+</script>
+</body>
+</html>
